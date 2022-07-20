@@ -1,0 +1,14 @@
+name: Tag Release
+on:
+  pull_request
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Tag Release
+      uses: sarjutambe/springbootproject@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        REPO_OWNER: sarjutambe
+        DRY_RUN: true

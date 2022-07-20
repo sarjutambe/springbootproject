@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.javacs</groupId>
+	<artifactId>springbootproject</artifactId>
+	<version>${revision}${changelist}</version>
+	 <packaging>jar</packaging>
+	<name>springbootproject</name>
+	<description>Demo project for Spring Boot</description>
+	
+
+	  <developers>
+	    <developer>
+      <id>sarjutambe</id>
+      <name>sarju tambe</name>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:https://github.com/sarjutambe/springbootproject.git</connection>
+    <developerConnection>scm:git:git@github.com:sarjutambe/springbootproject.git</developerConnection>
+    <url>https://github.com/sarjutambe/springbootproject</url>
+    <tag>${scmTag}</tag>
+  </scm>
+
+	<properties>
+		<revision>Release_1.0.0</revision>
+    		<changelist>-SNAPSHOT</changelist>
+    		<useBeta>true</useBeta>
+		<java.version>11</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+
+
+	<build>
+		  <pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		
+		<plugin>
+          	<artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                <reuseForks>false</reuseForks>
+                </configuration>
+		</plugin>
+		
+	</plugins>
+	  </pluginManagement>
+	 <plugins>
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <!--  copy the bouncycastle jars so they will be in the java archive -->
+            <id>copy-bc-jars</id>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <includeGroupIds>org.bouncycastle</includeGroupIds>
+              <excludeTransitive>true</excludeTransitive>
+              <outputDirectory>${project.build.directory}/extra-classes/WEB-INF/optional-lib/</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+
+	</build>
+	
+	<distributionManagement>
+   <repository>
+     <id>github</id>
+     <name>GitHub Sarjutambe Apache Maven Packages</name>
+     <url>https://maven.pkg.github.com/sarjutambe/springbootproject</url>
+   </repository>
+</distributionManagement>
+
+</project>
