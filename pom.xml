@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.javacs</groupId>
-	<artifactId>springbootproject</artifactId>
+	<artifactId>springbootproject3</artifactId>
 	<version>${revision}${changelist}</version>
 	 <packaging>jar</packaging>
 	<name>springbootproject</name>
